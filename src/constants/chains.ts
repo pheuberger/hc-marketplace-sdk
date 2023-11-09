@@ -1,18 +1,6 @@
 import { ChainId, ChainInfo } from "../types";
 
 export const chainInfo: { [chainId in ChainId]: ChainInfo } = {
-  [ChainId.MAINNET]: {
-    label: "Ethereum",
-    appUrl: "https://looksrare.org",
-    explorer: "https://etherscan.io",
-    rpcUrl: "https://eth-mainnet.g.alchemy.com/v2",
-    baseApiUrl: "https://graphql.looksrare.org",
-    osApiUrl: "https://api.opensea.io",
-    cdnUrl: "https://static.looksnice.org",
-    rewardsSubgraphUrl: "https://api.thegraph.com/subgraphs/name/looksrare/looks-distribution",
-    cloudinaryUrl: "https://looksrare.mo.cloudinary.net",
-    wsUrl: "wss://ws.looksrare.org/ws",
-  },
   [ChainId.GOERLI]: {
     label: "Goerli",
     appUrl: "https://goerli.looksrare.org",
@@ -20,10 +8,6 @@ export const chainInfo: { [chainId in ChainId]: ChainInfo } = {
     rpcUrl: "https://eth-goerli.g.alchemy.com/v2",
     baseApiUrl: "https://graphql-goerli.looksrare.org",
     osApiUrl: "https://testnets-api.opensea.io",
-    cdnUrl: "https://static-goerli.looksnice.org",
-    rewardsSubgraphUrl: "https://api.thegraph.com/subgraphs/name/0xjurassicpunk/looks-distribution",
-    cloudinaryUrl: "https://looksrare.mo.cloudinary.net/goerli",
-    wsUrl: "wss://ws-goerli.looksrare.org/ws",
   },
   [ChainId.SEPOLIA]: {
     label: "Sepolia",
@@ -32,10 +16,6 @@ export const chainInfo: { [chainId in ChainId]: ChainInfo } = {
     rpcUrl: "https://eth-sepolia.g.alchemy.com/v2",
     baseApiUrl: "https://graphql-sepolia.looksrare.org",
     osApiUrl: "https://testnets-api.opensea.io",
-    cdnUrl: "https://static-sepolia.looksnice.org",
-    rewardsSubgraphUrl: "https://api.thegraph.com/subgraphs/name/0xjurassicpunk/looks-distribution",
-    cloudinaryUrl: "https://looksrare.mo.cloudinary.net/sepolia",
-    wsUrl: "wss://ws-sepolia.looksrare.org/ws",
   },
   [ChainId.HARDHAT]: {
     label: "Hardhat",
@@ -44,9 +24,5 @@ export const chainInfo: { [chainId in ChainId]: ChainInfo } = {
     rpcUrl: "http://127.0.0.1:8545",
     baseApiUrl: "http://localhost:4000",
     osApiUrl: "https://testnets-api.opensea.io",
-    cdnUrl: "https://via.placeholder.com",
-    rewardsSubgraphUrl: "https://api.thegraph.com/subgraphs/name/0xjurassicpunk/looks-distribution",
-    cloudinaryUrl: "",
-    wsUrl: "ws://localhost:5001/ws",
   },
 };
