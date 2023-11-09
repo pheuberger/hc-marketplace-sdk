@@ -3,15 +3,10 @@ import { Eip712MakerMerkleTree } from "./utils/Eip712MakerMerkleTree";
 
 /** Addresses used to create a LooksRare instance */
 export interface Addresses {
-  LOOKS: string;
   EXCHANGE_V2: string;
   TRANSFER_MANAGER_V2: string;
   WETH: string;
   ORDER_VALIDATOR_V2: string;
-  REVERSE_RECORDS: string;
-  LOOKS_LP_V3: string;
-  STAKING_POOL_FOR_LOOKS_LP: string;
-  AGGREGATOR_UNISWAP_V3: string;
 }
 
 /** List of supported chains */
@@ -29,10 +24,6 @@ export interface ChainInfo {
   explorer: string;
   baseApiUrl: string;
   osApiUrl: string;
-  cdnUrl: string;
-  rewardsSubgraphUrl: string;
-  cloudinaryUrl: string;
-  wsUrl: string;
 }
 
 /** List of collection types supported by the protocol */
