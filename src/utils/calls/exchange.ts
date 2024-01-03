@@ -1,6 +1,6 @@
 import { Contract, ZeroAddress, Signer } from "ethers";
-import { LooksRareProtocol } from "../../typechain/@looksrare/contracts-exchange-v2/contracts/LooksRareProtocol";
-import abiLooksRareProtocol from "../../abis/LooksRareProtocol.json";
+import { HypercertExchange, HypercertExchangeAbi } from "@hypercerts-org/contracts";
+
 import { Maker, MerkleTree, Taker, ContractMethods } from "../../types";
 import { PayableOverrides } from "../../typechain/common";
 
@@ -11,27 +11,26 @@ export const executeTakerBid = (
   maker: Maker,
   makerSignature: string,
   merkleTree: MerkleTree,
-  affiliate: string,
   overrides?: PayableOverrides
 ): ContractMethods => {
   const overridesWithValue: PayableOverrides = {
     ...overrides,
     ...(maker.currency === ZeroAddress && { value: maker.price }),
   };
-  const contract = new Contract(address, abiLooksRareProtocol).connect(signer) as LooksRareProtocol;
+  const contract = new Contract(address, HypercertExchangeAbi).connect(signer) as HypercertExchange;
   return {
     call: (additionalOverrides?: PayableOverrides) =>
-      contract.executeTakerBid.send(taker, maker, makerSignature, merkleTree, affiliate, {
+      contract.executeTakerBid.send(taker, maker, makerSignature, merkleTree, {
         ...overridesWithValue,
         ...additionalOverrides,
       }),
     estimateGas: (additionalOverrides?: PayableOverrides) =>
-      contract.executeTakerBid.estimateGas(taker, maker, makerSignature, merkleTree, affiliate, {
+      contract.executeTakerBid.estimateGas(taker, maker, makerSignature, merkleTree, {
         ...overridesWithValue,
         ...additionalOverrides,
       }),
     callStatic: (additionalOverrides?: PayableOverrides) =>
-      contract.executeTakerBid.staticCall(taker, maker, makerSignature, merkleTree, affiliate, {
+      contract.executeTakerBid.staticCall(taker, maker, makerSignature, merkleTree, {
         ...overridesWithValue,
         ...additionalOverrides,
       }),
@@ -45,23 +44,22 @@ export const executeTakerAsk = (
   maker: Maker,
   makerSignature: string,
   merkleTree: MerkleTree,
-  affiliate: string,
   overrides?: PayableOverrides
 ): ContractMethods => {
-  const contract = new Contract(address, abiLooksRareProtocol).connect(signer) as LooksRareProtocol;
+  const contract = new Contract(address, HypercertExchangeAbi).connect(signer) as HypercertExchange;
   return {
     call: (additionalOverrides?: PayableOverrides) =>
-      contract.executeTakerAsk.send(taker, maker, makerSignature, merkleTree, affiliate, {
+      contract.executeTakerAsk.send(taker, maker, makerSignature, merkleTree, {
         ...overrides,
         ...additionalOverrides,
       }),
     estimateGas: (additionalOverrides?: PayableOverrides) =>
-      contract.executeTakerAsk.estimateGas(taker, maker, makerSignature, merkleTree, affiliate, {
+      contract.executeTakerAsk.estimateGas(taker, maker, makerSignature, merkleTree, {
         ...overrides,
         ...additionalOverrides,
       }),
     callStatic: (additionalOverrides?: PayableOverrides) =>
-      contract.executeTakerAsk.staticCall(taker, maker, makerSignature, merkleTree, affiliate, {
+      contract.executeTakerAsk.staticCall(taker, maker, makerSignature, merkleTree, {
         ...overrides,
         ...additionalOverrides,
       }),
@@ -76,7 +74,6 @@ export const executeMultipleTakerBids = (
   makerSignature: string[],
   isAtomic: boolean,
   merkleTree: MerkleTree[],
-  affiliate: string,
   overrides?: PayableOverrides
 ) => {
   const value = maker.reduce((acc, order) => (order.currency === ZeroAddress ? acc + BigInt(order.price) : acc), 0n);
@@ -84,20 +81,20 @@ export const executeMultipleTakerBids = (
     ...overrides,
     ...(value > 0 && { value }),
   };
-  const contract = new Contract(address, abiLooksRareProtocol).connect(signer) as LooksRareProtocol;
+  const contract = new Contract(address, HypercertExchangeAbi).connect(signer) as HypercertExchange;
   return {
     call: (additionalOverrides?: PayableOverrides) =>
-      contract.executeMultipleTakerBids.send(taker, maker, makerSignature, merkleTree, affiliate, isAtomic, {
+      contract.executeMultipleTakerBids.send(taker, maker, makerSignature, merkleTree, isAtomic, {
         ...overridesWithValue,
         ...additionalOverrides,
       }),
     estimateGas: (additionalOverrides?: PayableOverrides) =>
-      contract.executeMultipleTakerBids.estimateGas(taker, maker, makerSignature, merkleTree, affiliate, isAtomic, {
+      contract.executeMultipleTakerBids.estimateGas(taker, maker, makerSignature, merkleTree, isAtomic, {
         ...overridesWithValue,
         ...additionalOverrides,
       }),
     callStatic: (additionalOverrides?: PayableOverrides) =>
-      contract.executeMultipleTakerBids.staticCall(taker, maker, makerSignature, merkleTree, affiliate, isAtomic, {
+      contract.executeMultipleTakerBids.staticCall(taker, maker, makerSignature, merkleTree, isAtomic, {
         ...overridesWithValue,
         ...additionalOverrides,
       }),

@@ -5,14 +5,14 @@ const goerliAddresses: Addresses = {
   EXCHANGE_V2: deployments[5].HypercertExchange as string,
   TRANSFER_MANAGER_V2: deployments[5].TransferManager as string,
   WETH: "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
-  ORDER_VALIDATOR_V2: "0x7454Cc9AEB024bcE6A2CDC49ad4733B4D8215fb8",
+  ORDER_VALIDATOR_V2: deployments[5].OrderValidatorV2A as string,
 };
 
 const sepoliaAddresses: Addresses = {
   EXCHANGE_V2: deployments[11155111].HypercertExchange as string,
   TRANSFER_MANAGER_V2: deployments[11155111].TransferManager as string,
-  WETH: "",
-  ORDER_VALIDATOR_V2: "0x0bc129E4c1f8D7b5583eAbAeb1F7468935B6ec0C",
+  WETH: "0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9",
+  ORDER_VALIDATOR_V2: deployments[11155111].OrderValidatorV2A as string,
 };
 
 /**
