@@ -21,4 +21,12 @@ export default {
     typescript({ tsconfig: "./tsconfig.build.json" }),
     bundleSize(),
   ],
+  external: [
+    "@supabase/supabase-js",
+    "ethers",
+    "@hypercerts-org/sdk",
+    "@hypercerts-org/contracts",
+    "merkletreejs",
+    "js-sha3",
+  ],
 };
