@@ -7,11 +7,13 @@ export interface Addresses {
   TRANSFER_MANAGER_V2: `0x${string}`;
   WETH: `0x${string}`;
   ORDER_VALIDATOR_V2: `0x${string}`;
+  MINTER: `0x${string}`;
 }
 
 /** List of supported chains */
 export enum ChainId {
   SEPOLIA = 11155111,
+  HARDHAT = 31337,
 }
 
 /** ChainInfo data used to interact with LooksRare ecosystem */
