@@ -17,12 +17,12 @@ export const chainInfo: { [chainId in ChainId]: ChainInfo } = {
     baseApiUrl: "https://graphql-sepolia.looksrare.org",
     osApiUrl: "https://testnets-api.opensea.io",
   },
-  // [ChainId.HARDHAT]: {
-  //   label: "Hardhat",
-  //   appUrl: "http://localhost:3000",
-  //   explorer: "https://etherscan.io",
-  //   rpcUrl: "http://127.0.0.1:8545",
-  //   baseApiUrl: "http://localhost:4000",
-  //   osApiUrl: "https://testnets-api.opensea.io",
-  // },
+  [ChainId.HARDHAT]: {
+    label: "Hardhat",
+    appUrl: "http://localhost:3000",
+    explorer: "https://etherscan.io",
+    rpcUrl: "http://127.0.0.1:8545",
+    baseApiUrl: "http://localhost:4000",
+    osApiUrl: "https://testnets-api.opensea.io",
+  },
 };
