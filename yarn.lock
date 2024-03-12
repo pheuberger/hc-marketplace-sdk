@@ -885,29 +885,22 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-2.0.2.tgz#d9fae00a2d5cb40f92cfe64b47ad749fbc38f917"
   integrity sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==
 
-"@hypercerts-org/contracts@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@hypercerts-org/contracts/-/contracts-1.1.0.tgz#00c0765b0f79d706aac9764f46233acddc1382b9"
-  integrity sha512-iEEJP9LQTfgcFjnJj82AwkAob3kfFcTmxm6AGrCXFzt7CU3Xo2odCFKZ81UPFV9C4PyI8tPTSGd12NmUzjLlqA==
+"@hypercerts-org/contracts@1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@hypercerts-org/contracts/-/contracts-1.1.2.tgz#db02692d3837c94805c217113b0662286d23e655"
+  integrity sha512-+Y7TD1LX1c2FyU7OYuQ/NUFfcKaW5fIZ9R/Xr+DhNUbi7KstHhhdVEl1hmSExuvySbAD3wNKFaQWdlBRxT520Q==
   dependencies:
     hardhat "^2.18.3"
 
-"@hypercerts-org/contracts@1.1.1-alpha.1":
-  version "1.1.1-alpha.1"
-  resolved "https://registry.yarnpkg.com/@hypercerts-org/contracts/-/contracts-1.1.1-alpha.1.tgz#ecce2368976e76d1aeb5ba64cbe9308c5111f716"
-  integrity sha512-M7cNYEf+i6rT2jSOT4sob/oIlKalT2zSweBQq6iP1wCA16Vhf0Y5JDhwLH64z4XENJfOKKSO0TmDDF2kKvHReg==
-  dependencies:
-    hardhat "^2.18.3"
-
-"@hypercerts-org/sdk@1.4.2-alpha.2":
-  version "1.4.2-alpha.2"
-  resolved "https://registry.yarnpkg.com/@hypercerts-org/sdk/-/sdk-1.4.2-alpha.2.tgz#407aadef99635e871dc33db8a4515b3ed3d7d5d4"
-  integrity sha512-uwyN/lNrMk9/Iaje2rWghVHsP6L9Z3AYhTLlPW9twgNeC9BNNXGSpq70z48NMiEWS+eLDAXHBB2MkSoRl28g1Q==
+"@hypercerts-org/sdk@1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@hypercerts-org/sdk/-/sdk-1.4.3.tgz#215e47496192e35c24b817925303edb493547990"
+  integrity sha512-9K/2dY/r5dXZiFPlM9rg06P36aH49grpetsvisi9HxJMJYTIQy6ZKvB/ix3zC7LS+zSv8fhz13AEoQVlmP3Svw==
   dependencies:
     "@ethereum-attestation-service/eas-sdk" "1.3.7"
     "@ethersproject/abstract-signer" "^5.7.0"
     "@graphql-typed-document-node/core" "^3.2.0"
-    "@hypercerts-org/contracts" "1.1.1-alpha.1"
+    "@hypercerts-org/contracts" "1.1.2"
     "@openzeppelin/merkle-tree" "^1.0.5"
     "@urql/core" "^4.2.0"
     "@whatwg-node/fetch" "^0.9.13"

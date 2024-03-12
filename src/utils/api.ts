@@ -1,4 +1,4 @@
-import { Maker, QuoteType } from "../types";
+import { Maker, QuoteType, StrategyType } from "../types";
 import { createClient } from "@supabase/supabase-js";
 import { Database as HypercertsDatabase } from "./hypercerts-database-types";
 import { HypercertClient } from "@hypercerts-org/sdk";
@@ -91,4 +91,40 @@ export const fetchOrdersByHypercertId = async ({ hypercertId, chainId }: { hyper
   const tokenIds = fractions.claimTokens.map((fraction: any) => fraction.tokenID);
 
   return supabaseHypercerts.from("marketplace-orders").select("*").containedBy("itemIds", tokenIds).throwOnError();
+};
+
+interface FetchOrderArgs {
+  signer: `0x${string}`;
+  claimTokenIds: string[];
+  chainId: number;
+  strategy: StrategyType;
+}
+
+/**
+ * Fetch existing open orders from the marketplace API
+ * @param signer address of the user that created the order
+ * @param claimTokenIds a list of claimTokenIds - will return any order that is for one or more of these claimTokenIds
+ * @param chainId chain id for the order
+ * @param strategy strategy for the order
+ */
+export const fetchOrders = async ({ signer, claimTokenIds, chainId, strategy }: Partial<FetchOrderArgs>) => {
+  let baseQuery = supabaseHypercerts.from("marketplace-orders").select("*");
+
+  if (signer) {
+    baseQuery.eq("signer", signer);
+  }
+
+  if (claimTokenIds) {
+    baseQuery = baseQuery.overlaps("itemIds", claimTokenIds);
+  }
+
+  if (chainId) {
+    baseQuery.eq("chainId", chainId);
+  }
+
+  if (strategy) {
+    baseQuery.eq("strategyId", strategy);
+  }
+
+  return baseQuery.throwOnError();
 };
