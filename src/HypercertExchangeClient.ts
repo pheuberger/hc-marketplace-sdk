@@ -32,8 +32,6 @@ import { verifyMakerOrders } from "./utils/calls/orderValidator";
 import { encodeParams, getMakerParamsTypes, getTakerParamsTypes } from "./utils/encodeOrderParams";
 import { allowance, approve, balanceOf, isApprovedForAll, setApprovalForAll } from "./utils/calls/tokens";
 import { strategyInfo } from "./utils/calls/strategies";
-import * as api from "./utils/api";
-import { fetchOrderNonce } from "./utils/api";
 import {
   ErrorItemId,
   ErrorMerkleTreeDepth,
@@ -61,6 +59,7 @@ import {
   StrategyType,
   Taker,
 } from "./types";
+import { ApiClient } from "./utils/api";
 
 /**
  * HypercertExchange
@@ -72,7 +71,7 @@ export class HypercertExchangeClient {
   /** Mapping of Hypercert protocol addresses for the current chain */
   public readonly addresses: Addresses;
 
-  public readonly api: typeof api;
+  public readonly api: ApiClient;
 
   /**
    * Ethers signer
@@ -90,14 +89,19 @@ export class HypercertExchangeClient {
    * @param chainId Current app chain id
    * @param provider Ethers provider
    * @param signer Ethers signer
-   * @param override Overrides contract addresses for hardhat setup
+   * @param overrides Override contract addresses or api endpoint used
    */
-  constructor(chainId: ChainId, provider: Provider, signer?: Signer, override?: Addresses) {
+  constructor(
+    chainId: ChainId,
+    provider: Provider,
+    signer?: Signer,
+    overrides?: { addresses: Addresses; apiEndpoint?: string }
+  ) {
     this.chainId = chainId;
-    this.addresses = override ?? addressesByNetwork[this.chainId];
+    this.addresses = overrides?.addresses ?? addressesByNetwork[this.chainId];
     this.signer = signer;
     this.provider = provider;
-    this.api = api;
+    this.api = new ApiClient(overrides?.apiEndpoint);
   }
 
   /**
@@ -645,7 +649,7 @@ export class HypercertExchangeClient {
 
     const chainId = this.chainId;
 
-    const { nonce_counter } = await fetchOrderNonce({
+    const { nonce_counter } = await this.api.fetchOrderNonce({
       address,
       chainId,
     });
@@ -712,7 +716,7 @@ export class HypercertExchangeClient {
 
     const chainId = this.chainId;
 
-    const { nonce_counter } = await fetchOrderNonce({
+    const { nonce_counter } = await this.api.fetchOrderNonce({
       address,
       chainId,
     });
@@ -781,7 +785,7 @@ export class HypercertExchangeClient {
 
     const chainId = this.chainId;
 
-    return api.registerOrder({
+    return this.api.registerOrder({
       order,
       signer: address,
       signature,
