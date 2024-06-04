@@ -66,7 +66,7 @@ export class ApiClient {
   }) => {
     const { globalNonce, ...orderWithoutGlobalNonce } = order;
 
-    return fetch(`${this._baseUrl}/marketplace/order/`, {
+    return fetch(`${this._baseUrl}/marketplace/orders/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
