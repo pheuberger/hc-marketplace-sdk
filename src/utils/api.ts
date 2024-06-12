@@ -122,8 +122,11 @@ export class ApiClient {
       chain: { id: chainId },
     });
 
-    const fractions = await hypercertsClient.indexer.fractionsByClaim(hypercertId);
-    const tokenIds = fractions?.claimTokens.map((fraction) => fraction.tokenID) || [];
+    const fractions = await hypercertsClient.indexer.fractionsByHypercert({ hypercertId });
+    const tokenIds =
+      fractions?.hypercerts.data?.flatMap((hypercert) =>
+        hypercert.fractions?.data?.map((fraction) => fraction.hypercert_id)
+      ) || [];
 
     return supabaseHypercerts.from("marketplace_orders").select("*").containedBy("itemIds", tokenIds).throwOnError();
   };
