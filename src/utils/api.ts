@@ -1,7 +1,7 @@
 import { Maker, QuoteType, StrategyType } from "../types";
 import { createClient } from "@supabase/supabase-js";
 import { Database as HypercertsDatabase } from "./hypercerts-database-types";
-import { HypercertClient } from "@hypercerts-org/sdk";
+import { HypercertClient, parseClaimOrFractionId } from "@hypercerts-org/sdk";
 
 const HYPERCERTS_MARKETPLACE_API_URL = process.env.HYPERCERTS_MARKETPLACE_API_URL;
 const SUPABASE_HYPERCERTS_URL = process.env.SUPABASE_HYPERCERTS_URL;
@@ -117,18 +117,19 @@ export class ApiClient {
    * @param hypercertId Hypercert ID
    * @param chainId Chain ID
    */
-  fetchOrdersByHypercertId = async ({ hypercertId, chainId }: { hypercertId: string; chainId: number }) => {
+  fetchOrdersByHypercertId = async ({ hypercertId }: { hypercertId: string }) => {
     const hypercertsClient = new HypercertClient({
-      chain: { id: chainId },
+      environment: "test",
     });
 
     const fractions = await hypercertsClient.indexer.fractionsByHypercert({ hypercertId });
     const tokenIds =
       fractions?.hypercerts.data?.flatMap((hypercert) =>
-        hypercert.fractions?.data?.map((fraction) => fraction.hypercert_id)
+        hypercert.fractions?.data?.map((fraction) => parseClaimOrFractionId(fraction.hypercert_id!).id)
       ) || [];
 
-    return supabaseHypercerts.from("marketplace_orders").select("*").containedBy("itemIds", tokenIds).throwOnError();
+    const result = await supabaseHypercerts.from("marketplace_orders").select("*").overlaps("itemIds", tokenIds);
+    return result;
   };
 
   handleResponse = async <T>(res: Response) => {

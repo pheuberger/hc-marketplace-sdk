@@ -32,3 +32,4 @@ export { Eip712MakerMerkleTree } from "./utils/Eip712MakerMerkleTree";
 export { Eip712MerkleTree } from "./utils/Eip712MerkleTree";
 
 export { HypercertExchangeClient } from "./HypercertExchangeClient";
+export { ApiClient } from "./utils/api";
