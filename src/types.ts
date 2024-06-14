@@ -37,7 +37,7 @@ export enum CollectionType {
 /** List of trading strategies */
 export enum StrategyType {
   standard = 0,
-  collection = 1,
+  collection = 10,
   collectionWithMerkleTree = 2,
   dutchAuction = 4,
   itemIdsRange = 5,
@@ -45,7 +45,7 @@ export enum StrategyType {
   hypercertCollectionOfferWithProof = 7,
   hypercertCollectionOfferWithAllowlist = 8,
   hypercertDutchAuction = 9,
-  hypercertFractionOffer = 10,
+  hypercertFractionOffer = 1,
   hypercertFractionOfferWithAllowlist = 11,
 }
 
