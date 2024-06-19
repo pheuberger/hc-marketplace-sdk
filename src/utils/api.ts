@@ -125,7 +125,7 @@ export class ApiClient {
     const fractions = await hypercertsClient.indexer.fractionsByHypercert({ hypercertId });
     const tokenIds =
       fractions?.hypercerts.data?.flatMap((hypercert) =>
-        hypercert.fractions?.data?.map((fraction) => parseClaimOrFractionId(fraction.hypercert_id!).id)
+        hypercert.fractions?.data?.map((fraction) => parseClaimOrFractionId(fraction.fraction_id!).id)
       ) || [];
 
     const result = await supabaseHypercerts.from("marketplace_orders").select("*").overlaps("itemIds", tokenIds);
