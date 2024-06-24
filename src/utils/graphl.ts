@@ -3,7 +3,7 @@ import { CONSTANTS } from "@hypercerts-org/sdk";
 import { graphql } from "gql.tada";
 
 export const urqlClient = new Client({
-  url: CONSTANTS.ENDPOINTS["test"],
+  url: `${CONSTANTS.ENDPOINTS["test"]}/v1/graphql`,
   exchanges: [cacheExchange, fetchExchange],
 });
 
@@ -13,7 +13,7 @@ const fractionsByIdQuery = graphql(`
       data {
         creation_block_timestamp
         fraction_id
-        last_update_block_timestamp 
+        last_update_block_timestamp
         owner_address
         units
       }
