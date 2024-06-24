@@ -1,7 +1,7 @@
 import { Maker, QuoteType, StrategyType } from "../types";
 import { createClient } from "@supabase/supabase-js";
 import { Database as HypercertsDatabase } from "./hypercerts-database-types";
-import { HypercertClient, parseClaimOrFractionId } from "@hypercerts-org/sdk";
+import { parseClaimOrFractionId } from "@hypercerts-org/sdk";
 import { getFractionsById } from "./graphl";
 
 const HYPERCERTS_MARKETPLACE_API_URL = process.env.HYPERCERTS_MARKETPLACE_API_URL;

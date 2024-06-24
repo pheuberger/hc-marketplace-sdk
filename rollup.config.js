@@ -4,6 +4,7 @@ import copy from "rollup-plugin-copy";
 import bundleSize from "rollup-plugin-bundle-size";
 import dotenv from "rollup-plugin-dotenv";
 import pkg from "./package.json";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 
 /** @type {import('rollup').RollupOptions} */
 export default {
@@ -18,6 +19,7 @@ export default {
       targets: [{ src: "src/abis/**/*", dest: "dist/abis" }],
     }),
     json(),
+    nodeResolve(),
     typescript({ tsconfig: "./tsconfig.build.json" }),
     bundleSize(),
   ],

@@ -1,6 +1,6 @@
 {
   "name": "@hypercerts-org/marketplace-sdk",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "license": "MIT",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -54,6 +54,7 @@
     "@looksrare/contracts-exchange-v2": "^0.1.2",
     "@nomicfoundation/hardhat-ethers": "^3.0.4",
     "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.0.0",
     "@typechain/ethers-v6": "^0.4.0",
     "@typechain/hardhat": "^8.0.0",
