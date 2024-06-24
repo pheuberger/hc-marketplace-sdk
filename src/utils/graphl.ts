@@ -1,11 +1,5 @@
-import { Client, cacheExchange, fetchExchange } from "@urql/core";
-import { CONSTANTS } from "@hypercerts-org/sdk";
+import { Client } from "@urql/core";
 import { graphql } from "gql.tada";
-
-export const urqlClient = new Client({
-  url: `${CONSTANTS.ENDPOINTS["test"]}/v1/graphql`,
-  exchanges: [cacheExchange, fetchExchange],
-});
 
 const fractionsByIdQuery = graphql(`
   query fractionsById($fraction_id: String!) {
@@ -21,8 +15,8 @@ const fractionsByIdQuery = graphql(`
   }
 `);
 
-export const getFractionsById = async (fractionId: string) => {
-  const { data, error } = await urqlClient
+export const getFractionsById = async (fractionId: string, client: Client) => {
+  const { data, error } = await client
     .query(fractionsByIdQuery, {
       fraction_id: fractionId,
     })

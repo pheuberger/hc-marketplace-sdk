@@ -60,6 +60,8 @@ import {
   Taker,
 } from "./types";
 import { ApiClient } from "./utils/api";
+import { CONSTANTS } from "@hypercerts-org/sdk";
+import { asDeployedChain } from "@hypercerts-org/contracts";
 
 /**
  * HypercertExchange
@@ -97,11 +99,16 @@ export class HypercertExchangeClient {
     signer?: Signer,
     overrides?: { addresses: Addresses; apiEndpoint?: string }
   ) {
+    const deployment = CONSTANTS.DEPLOYMENTS[asDeployedChain(chainId)];
+    if (!deployment) {
+      throw new Error("Chain not supported");
+    }
+    const indexerEnvironment = deployment.isTestnet ? "test" : "production";
     this.chainId = chainId;
     this.addresses = overrides?.addresses ?? addressesByNetwork[this.chainId];
     this.signer = signer;
     this.provider = provider;
-    this.api = new ApiClient(overrides?.apiEndpoint);
+    this.api = new ApiClient(indexerEnvironment, overrides?.apiEndpoint);
   }
 
   /**

@@ -1,8 +1,9 @@
 import { Maker, QuoteType, StrategyType } from "../types";
 import { createClient } from "@supabase/supabase-js";
 import { Database as HypercertsDatabase } from "./hypercerts-database-types";
-import { parseClaimOrFractionId } from "@hypercerts-org/sdk";
+import { CONSTANTS, parseClaimOrFractionId } from "@hypercerts-org/sdk";
 import { getFractionsById } from "./graphl";
+import { cacheExchange, Client, fetchExchange } from "@urql/core";
 
 const HYPERCERTS_MARKETPLACE_API_URL = process.env.HYPERCERTS_MARKETPLACE_API_URL;
 const SUPABASE_HYPERCERTS_URL = process.env.SUPABASE_HYPERCERTS_URL;
@@ -15,13 +16,19 @@ export const supabaseHypercerts = createClient<HypercertsDatabase>(
 
 export class ApiClient {
   private _baseUrl: string;
+  private _urqlClient: Client;
 
-  constructor(private readonly baseUrl?: string) {
+  constructor(indexerEnvironment: "test" | "production", private readonly baseUrl?: string) {
     const url = baseUrl || HYPERCERTS_MARKETPLACE_API_URL;
     if (!url) {
       throw new Error("No API URL provided");
     }
     this._baseUrl = url;
+
+    this._urqlClient = new Client({
+      url: `${CONSTANTS.ENDPOINTS[indexerEnvironment]}/v1/graphql`,
+      exchanges: [cacheExchange, fetchExchange],
+    });
   }
 
   /**
@@ -119,7 +126,7 @@ export class ApiClient {
    * @param chainId Chain ID
    */
   fetchOrdersByHypercertId = async ({ hypercertId }: { hypercertId: string }) => {
-    const fractions = await getFractionsById(hypercertId);
+    const fractions = await getFractionsById(hypercertId, this._urqlClient);
     const tokenIds =
       fractions?.flatMap(() => fractions.map((fraction) => parseClaimOrFractionId(fraction.fraction_id!).id)) || [];
 
