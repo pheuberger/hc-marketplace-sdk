@@ -5,15 +5,33 @@ import { Eip712MakerMerkleTree } from "./utils/Eip712MakerMerkleTree";
 export interface Addresses {
   EXCHANGE_V2: `0x${string}`;
   TRANSFER_MANAGER_V2: `0x${string}`;
-  WETH: `0x${string}`;
   ORDER_VALIDATOR_V2: `0x${string}`;
   MINTER: `0x${string}`;
+}
+
+/** List of supported currencies */
+export interface Currencies {
+  ETH: Currency;
+  WETH: Currency;
+  USDC: Currency;
+  DAI: Currency;
+}
+
+/** Available information about a currency */
+interface Currency {
+  symbol: string;
+  address: `0x${string}`;
+  decimals: number;
 }
 
 /** List of supported chains */
 export enum ChainId {
   SEPOLIA = 11155111,
+  BASE_SEPOLIA = 84532,
   HARDHAT = 31337,
+  OPTIMISM = 10,
+  CELO = 42220,
+  BASE = 8453,
 }
 
 /** ChainInfo data used to interact with HypercertExchange ecosystem */
