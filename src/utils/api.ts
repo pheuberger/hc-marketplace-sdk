@@ -155,7 +155,7 @@ export class ApiClient {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        tokenIds,
+        tokenIds: tokenIds.map((id) => id.toString()),
         chainId,
       }),
     })
