@@ -148,14 +148,14 @@ export class ApiClient {
     return (await res.json()) as T;
   };
 
-  updateOrderValidity = async (tokenId: bigint, chainId: number) => {
+  updateOrderValidity = async (tokenIds: bigint[], chainId: number) => {
     return fetch(`${this._baseUrl}/marketplace/validate/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        tokenId,
+        tokenIds,
         chainId,
       }),
     })

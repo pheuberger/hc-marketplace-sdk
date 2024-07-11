@@ -637,7 +637,14 @@ export class HypercertExchangeClient {
   public async checkOrdersValidity(
     orders: Database["public"]["Tables"]["marketplace_orders"]["Row"][],
     overrides?: Overrides
-  ): Promise<{ id: string; valid: boolean; validatorCodes: OrderValidatorCode[] }[]> {
+  ): Promise<
+    {
+      id: string;
+      valid: boolean;
+      validatorCodes: OrderValidatorCode[];
+      order: Database["public"]["Tables"]["marketplace_orders"]["Row"];
+    }[]
+  > {
     // Prepare matching orders for validation
     const signatures: string[] = [];
     const makers: Maker[] = [];
@@ -655,7 +662,7 @@ export class HypercertExchangeClient {
     return result.map((res, index) => {
       const order = orders[index];
       const valid = res.every((code) => ACCEPTED_ERROR_CODES.includes(code));
-      return { id: order.id, valid, validatorCodes: res };
+      return { id: order.id, valid, validatorCodes: res, order };
     });
   }
 
