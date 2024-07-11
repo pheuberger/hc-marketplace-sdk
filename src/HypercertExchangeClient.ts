@@ -62,6 +62,7 @@ import {
 import { ApiClient } from "./utils/api";
 import { CONSTANTS } from "@hypercerts-org/sdk";
 import { asDeployedChain } from "@hypercerts-org/contracts";
+import { Database } from "./utils/hypercerts-database-types";
 
 const ACCEPTED_ERROR_CODES = [
   OrderValidatorCode.ORDER_EXPECTED_TO_BE_VALID,
@@ -630,21 +631,31 @@ export class HypercertExchangeClient {
 
   /**
    * Utility function to check if a list of orders are valid, according to logic specific for hypercerts using order validation codes.
-   * @param makers List of maker orders
-   * @param signatures List of signatures
-   * @param merkleTrees List of merkle trees (optional)
+   * @param orders List of orders to be checked
    * @param overrides Call overrides (optional)
    */
   public async checkOrdersValidity(
-    makers: Maker[],
-    signatures: string[],
-    merkleTrees?: MerkleTree[],
+    orders: Database["public"]["Tables"]["marketplace_orders"]["Row"][],
     overrides?: Overrides
-  ): Promise<{ valid: boolean; validatorCodes: OrderValidatorCode[] }[]> {
-    const result = await this.verifyMakerOrders(makers, signatures, merkleTrees, overrides);
-    return result.map((res) => {
+  ): Promise<{ id: string; valid: boolean; validatorCodes: OrderValidatorCode[] }[]> {
+    // Prepare matching orders for validation
+    const signatures: string[] = [];
+    const makers: Maker[] = [];
+
+    for (const order of orders) {
+      const { signature, chainId, id: __, ...orderWithoutSignature } = order;
+      if (chainId !== this.chainId) {
+        throw new Error("Chain ID mismatch when checking order validity");
+      }
+      signatures.push(signature);
+      makers.push(orderWithoutSignature);
+    }
+
+    const result = await this.verifyMakerOrders(makers, signatures, undefined, overrides);
+    return result.map((res, index) => {
+      const order = orders[index];
       const valid = res.every((code) => ACCEPTED_ERROR_CODES.includes(code));
-      return { valid, validatorCodes: res };
+      return { id: order.id, valid, validatorCodes: res };
     });
   }
 
