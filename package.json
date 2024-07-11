@@ -1,6 +1,6 @@
 {
   "name": "@hypercerts-org/marketplace-sdk",
-  "version": "0.3.16",
+  "version": "0.3.17",
   "license": "MIT",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

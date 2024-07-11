@@ -629,16 +629,23 @@ export class HypercertExchangeClient {
   }
 
   /**
-   * Is order valid
+   * Utility function to check if a list of orders are valid, according to logic specific for hypercerts using order validation codes.
+   * @param makers List of maker orders
+   * @param signatures List of signatures
+   * @param merkleTrees List of merkle trees (optional)
+   * @param overrides Call overrides (optional)
    */
-  public async checkOrderValidity(
+  public async checkOrdersValidity(
     makers: Maker[],
     signatures: string[],
-    merkleTrees: MerkleTree[],
+    merkleTrees?: MerkleTree[],
     overrides?: Overrides
-  ): Promise<boolean> {
+  ): Promise<{ valid: boolean; validatorCodes: OrderValidatorCode[] }[]> {
     const result = await this.verifyMakerOrders(makers, signatures, merkleTrees, overrides);
-    return result[0].every((code) => ACCEPTED_ERROR_CODES.includes(code));
+    return result.map((res) => {
+      const valid = res.every((code) => ACCEPTED_ERROR_CODES.includes(code));
+      return { valid, validatorCodes: res };
+    });
   }
 
   /**
