@@ -63,6 +63,11 @@ import { ApiClient } from "./utils/api";
 import { CONSTANTS } from "@hypercerts-org/sdk";
 import { asDeployedChain } from "@hypercerts-org/contracts";
 
+const ACCEPTED_ERROR_CODES = [
+  OrderValidatorCode.ORDER_EXPECTED_TO_BE_VALID,
+  OrderValidatorCode.TOO_EARLY_TO_EXECUTE_ORDER,
+];
+
 /**
  * HypercertExchange
  * This class provides helpers to interact with the HypercertExchange V2 contracts
@@ -621,6 +626,19 @@ export class HypercertExchangeClient {
       _merkleTrees,
       overrides
     );
+  }
+
+  /**
+   * Is order valid
+   */
+  public async checkOrderValidity(
+    makers: Maker[],
+    signatures: string[],
+    merkleTrees: MerkleTree[],
+    overrides?: Overrides
+  ): Promise<boolean> {
+    const result = await this.verifyMakerOrders(makers, signatures, merkleTrees, overrides);
+    return result[0].every((code) => ACCEPTED_ERROR_CODES.includes(code));
   }
 
   /**

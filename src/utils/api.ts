@@ -1,4 +1,4 @@
-import { Maker, QuoteType, StrategyType } from "../types";
+import { Maker, OrderValidatorCode, QuoteType, StrategyType } from "../types";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { Database as HypercertsDatabase } from "./hypercerts-database-types";
 import { CONSTANTS, parseClaimOrFractionId } from "@hypercerts-org/sdk";
@@ -146,6 +146,25 @@ export class ApiClient {
       throw new Error(error.message);
     }
     return (await res.json()) as T;
+  };
+
+  updateOrderValidity = async (tokenId: bigint, chainId: number) => {
+    return fetch(`${this._baseUrl}/marketplace/validate/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        tokenId,
+        chainId,
+      }),
+    })
+      .then((res) =>
+        this.handleResponse<{ data: { id: string; invalidated: boolean; validator_codes: OrderValidatorCode[] }[] }>(
+          res
+        )
+      )
+      .then((res) => res.data);
   };
 }
 

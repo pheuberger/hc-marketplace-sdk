@@ -18,7 +18,7 @@ export interface Currencies {
 }
 
 /** Available information about a currency */
-interface Currency {
+export interface Currency {
   symbol: string;
   address: `0x${string}`;
   decimals: number;
