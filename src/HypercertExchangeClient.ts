@@ -650,12 +650,29 @@ export class HypercertExchangeClient {
     const makers: Maker[] = [];
 
     for (const order of orders) {
-      const { signature, chainId, id: __, ...orderWithoutSignature } = order;
+      const { signature, chainId } = order;
       if (chainId !== this.chainId) {
         throw new Error("Chain ID mismatch when checking order validity");
       }
       signatures.push(signature);
-      makers.push(orderWithoutSignature);
+      const maker: Maker = {
+        quoteType: order.quoteType,
+        globalNonce: order.globalNonce,
+        subsetNonce: order.subsetNonce,
+        strategyId: order.strategyId,
+        collectionType: order.collectionType,
+        orderNonce: order.orderNonce,
+        collection: order.collection,
+        currency: order.currency,
+        signer: order.signer,
+        startTime: order.startTime,
+        endTime: order.endTime,
+        price: order.price,
+        itemIds: order.itemIds,
+        amounts: order.amounts,
+        additionalParameters: order.additionalParameters,
+      };
+      makers.push(maker);
     }
 
     const result = await this.verifyMakerOrders(makers, signatures, undefined, overrides);

@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@hypercerts-org/sdk':
-        specifier: 2.0.0-alpha.27
-        version: 2.0.0-alpha.27(graphql@16.8.1)(rollup@4.10.0)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
+        specifier: 2.0.0-alpha.30
+        version: 2.0.0-alpha.30(graphql@16.8.1)(rollup@4.10.0)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
       '@supabase/supabase-js':
         specifier: ^2.39.2
         version: 2.39.6
@@ -37,8 +37,8 @@ importers:
         specifier: ^17.0.2
         version: 17.8.1
       '@hypercerts-org/contracts':
-        specifier: 2.0.0-alpha.0
-        version: 2.0.0-alpha.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
+        specifier: 2.0.0-alpha.1
+        version: 2.0.0-alpha.1(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
       '@istanbuljs/nyc-config-typescript':
         specifier: ^1.0.2
         version: 1.0.2(nyc@15.1.0)
@@ -503,11 +503,11 @@ packages:
   '@humanwhocodes/object-schema@2.0.2':
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
 
-  '@hypercerts-org/contracts@2.0.0-alpha.0':
-    resolution: {integrity: sha512-xkvl2goo1Uz39TdALs4ypjxarmxk4Lu0X8JZc5+TdmVw/hsaywjE5WpPgil/AFE5Ccm3qyNGVsY6fz6co5GvVg==}
+  '@hypercerts-org/contracts@2.0.0-alpha.1':
+    resolution: {integrity: sha512-t+2eYorMC7GjFJCmwqIQzqbxBMATG+/zXJL6BFwJQPRCQEAcQhh4tuwcBhIvPz1kQj2capetZyAPO6gKmgtzig==}
 
-  '@hypercerts-org/sdk@2.0.0-alpha.27':
-    resolution: {integrity: sha512-EP0pO8SioYIkmNJBnm/g0L3xUue6LY7f7CqgxKtfDIFCj5eCxuSCTgpe8gHNVAEKSn+NOXBdZ3ucP/ibj3F12Q==}
+  '@hypercerts-org/sdk@2.0.0-alpha.30':
+    resolution: {integrity: sha512-xibQgoEb/xgqXGzlHibwruGqRbOu7khrzzd8Vht+aGHusJfL5GzOTZ+aVE+cw6g4yfVFV0Bpwk2pNGj/nH2LHQ==}
 
   '@iarna/toml@2.2.5':
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
@@ -593,6 +593,38 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
+
+  '@nomicfoundation/edr-darwin-arm64@0.4.2':
+    resolution: {integrity: sha512-S+hhepupfqpBvMa9M1PVS08sVjGXsLnjyAsjhrrsjsNuTHVLhKzhkguvBD5g4If5skrwgOaVqpag4wnQbd15kQ==}
+    engines: {node: '>= 18'}
+
+  '@nomicfoundation/edr-darwin-x64@0.4.2':
+    resolution: {integrity: sha512-/zM94AUrXz6CmcsecRNHJ50jABDUFafmGc4iBmkfX/mTp4tVZj7XTyIogrQIt0FnTaeb4CgZoLap2+8tW/Uldg==}
+    engines: {node: '>= 18'}
+
+  '@nomicfoundation/edr-linux-arm64-gnu@0.4.2':
+    resolution: {integrity: sha512-TV3Pr2tFvvmCfPCi9PaCGLtqn+oLaPKfL2NWpnoCeFFdzDQXi2L930yP1oUPY5RXd78NLdVHMkEkbhb2b6Wuvg==}
+    engines: {node: '>= 18'}
+
+  '@nomicfoundation/edr-linux-arm64-musl@0.4.2':
+    resolution: {integrity: sha512-PALwrLBk1M9rolXyhSX8xdhe5jL0qf/PgiCIF7W7lUyVKrI/I0oiU0EHDk/Xw7yi2UJg4WRyhhZoHYa0g4g8Qg==}
+    engines: {node: '>= 18'}
+
+  '@nomicfoundation/edr-linux-x64-gnu@0.4.2':
+    resolution: {integrity: sha512-5svkftypDjAZ1LxV1onojlaqPRxrTEjJLkrUwLL+Fao5ZMe7aTnk5QQ1Jv76gW6WYZnMXNgjPhRcnw3oSNrqFA==}
+    engines: {node: '>= 18'}
+
+  '@nomicfoundation/edr-linux-x64-musl@0.4.2':
+    resolution: {integrity: sha512-qiMlXQTggdH9zfOB4Eil4rQ95z8s7QdLJcOfz5Aym12qJNkCyF9hi4cc4dDCWA0CdI3x3oLbuf8qb81SF8R45w==}
+    engines: {node: '>= 18'}
+
+  '@nomicfoundation/edr-win32-x64-msvc@0.4.2':
+    resolution: {integrity: sha512-hDkAb0iaMmGYwBY/rA1oCX8VpsezfQcHPEPIEGXEcWC3WbnOgIZo0Qkpu/g0OMtFOJSQlWLXvKZuV7blhnrQag==}
+    engines: {node: '>= 18'}
+
+  '@nomicfoundation/edr@0.4.2':
+    resolution: {integrity: sha512-U7v0HuZHfrsl/5FpUzuB2FYA0+FUglHHwiO6NhvLtNYKMZcPzdS6iUriMp/7GWs0SVxW3bAht9GinZPxdhVwWg==}
+    engines: {node: '>= 18'}
 
   '@nomicfoundation/ethereumjs-block@5.0.4':
     resolution: {integrity: sha512-AcyacJ9eX/uPEvqsPiB+WO1ymE+kyH48qGGiGV+YTojdtas8itUTW5dehDSOXEEItWGbbzEJ4PRqnQZlWaPvDw==}
@@ -1801,6 +1833,10 @@ packages:
   commander@3.0.2:
     resolution: {integrity: sha512-Gar0ASD4BDyKC4hl4DwHqDrmvjoxWKZigVnAbn5H1owvm4CxCPdb0HQDehwNYMJpla5+M2tPmPARzhtYuwpHow==}
 
+  commander@8.3.0:
+    resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
+    engines: {node: '>= 12'}
+
   commondir@1.0.1:
     resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
 
@@ -2537,6 +2573,18 @@ packages:
 
   hardhat@2.20.0:
     resolution: {integrity: sha512-TtWZ4mKOH5YA+PCDAGAjG7Gub2NA+egAX7RIHq5XnGrEALNXAbyP3S0I9vOE1MWCgZhn+XOFUNfDuHgkBOPoRw==}
+    hasBin: true
+    peerDependencies:
+      ts-node: '*'
+      typescript: '*'
+    peerDependenciesMeta:
+      ts-node:
+        optional: true
+      typescript:
+        optional: true
+
+  hardhat@2.22.6:
+    resolution: {integrity: sha512-abFEnd9QACwEtSvZZGSmzvw7N3zhQN1cDKz5SLHAupfG24qTHofCjqvD5kT5Wwsq5XOL0ON1Mq5rr4v0XX5ciw==}
     hasBin: true
     peerDependencies:
       ts-node: '*'
@@ -4025,6 +4073,11 @@ packages:
     engines: {node: '>=8.0.0'}
     hasBin: true
 
+  solc@0.8.26:
+    resolution: {integrity: sha512-yiPQNVf5rBFHwN6SIf3TUUvVAFKcQqmSUFeq+fb6pNRCo0ZCgpYOZDi3BVoezCPIAcKrVYd/qXlBLUP9wVrZ9g==}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
+
   solhint@3.6.2:
     resolution: {integrity: sha512-85EeLbmkcPwD+3JR7aEMKsVC9YrRSxd4qkXuMzrlf7+z2Eqdfm1wHWq1ffTuo5aDhoZxp2I9yF3QkxZOxOL7aQ==}
     hasBin: true
@@ -5255,9 +5308,9 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.2': {}
 
-  '@hypercerts-org/contracts@2.0.0-alpha.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)':
+  '@hypercerts-org/contracts@2.0.0-alpha.1(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)':
     dependencies:
-      hardhat: 2.20.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
+      hardhat: 2.22.6(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
     transitivePeerDependencies:
       - bufferutil
       - c-kzg
@@ -5266,10 +5319,10 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@hypercerts-org/sdk@2.0.0-alpha.27(graphql@16.8.1)(rollup@4.10.0)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)':
+  '@hypercerts-org/sdk@2.0.0-alpha.30(graphql@16.8.1)(rollup@4.10.0)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)':
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.8.1)
-      '@hypercerts-org/contracts': 2.0.0-alpha.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
+      '@hypercerts-org/contracts': 2.0.0-alpha.1(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
       '@openzeppelin/merkle-tree': 1.0.6
       '@swc/core': 1.6.5
       ajv: 8.16.0
@@ -5379,6 +5432,30 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
+
+  '@nomicfoundation/edr-darwin-arm64@0.4.2': {}
+
+  '@nomicfoundation/edr-darwin-x64@0.4.2': {}
+
+  '@nomicfoundation/edr-linux-arm64-gnu@0.4.2': {}
+
+  '@nomicfoundation/edr-linux-arm64-musl@0.4.2': {}
+
+  '@nomicfoundation/edr-linux-x64-gnu@0.4.2': {}
+
+  '@nomicfoundation/edr-linux-x64-musl@0.4.2': {}
+
+  '@nomicfoundation/edr-win32-x64-msvc@0.4.2': {}
+
+  '@nomicfoundation/edr@0.4.2':
+    dependencies:
+      '@nomicfoundation/edr-darwin-arm64': 0.4.2
+      '@nomicfoundation/edr-darwin-x64': 0.4.2
+      '@nomicfoundation/edr-linux-arm64-gnu': 0.4.2
+      '@nomicfoundation/edr-linux-arm64-musl': 0.4.2
+      '@nomicfoundation/edr-linux-x64-gnu': 0.4.2
+      '@nomicfoundation/edr-linux-x64-musl': 0.4.2
+      '@nomicfoundation/edr-win32-x64-msvc': 0.4.2
 
   '@nomicfoundation/ethereumjs-block@5.0.4':
     dependencies:
@@ -6339,7 +6416,7 @@ snapshots:
 
   axios@1.7.2:
     dependencies:
-      follow-redirects: 1.15.6
+      follow-redirects: 1.15.6(debug@4.3.4)
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -6709,6 +6786,8 @@ snapshots:
   commander@11.0.0: {}
 
   commander@3.0.2: {}
+
+  commander@8.3.0: {}
 
   commondir@1.0.1: {}
 
@@ -7362,7 +7441,9 @@ snapshots:
     optionalDependencies:
       debug: 4.3.4(supports-color@8.1.1)
 
-  follow-redirects@1.15.6: {}
+  follow-redirects@1.15.6(debug@4.3.4):
+    optionalDependencies:
+      debug: 4.3.4(supports-color@8.1.1)
 
   for-each@0.3.3:
     dependencies:
@@ -7688,6 +7769,60 @@ snapshots:
       resolve: 1.17.0
       semver: 6.3.1
       solc: 0.7.3(debug@4.3.4)
+      source-map-support: 0.5.21
+      stacktrace-parser: 0.1.10
+      tsort: 0.0.1
+      undici: 5.28.3
+      uuid: 8.3.2
+      ws: 7.5.9
+    optionalDependencies:
+      ts-node: 10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3)
+      typescript: 5.3.3
+    transitivePeerDependencies:
+      - bufferutil
+      - c-kzg
+      - supports-color
+      - utf-8-validate
+
+  hardhat@2.22.6(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3):
+    dependencies:
+      '@ethersproject/abi': 5.7.0
+      '@metamask/eth-sig-util': 4.0.1
+      '@nomicfoundation/edr': 0.4.2
+      '@nomicfoundation/ethereumjs-common': 4.0.4
+      '@nomicfoundation/ethereumjs-tx': 5.0.4
+      '@nomicfoundation/ethereumjs-util': 9.0.4
+      '@nomicfoundation/solidity-analyzer': 0.1.1
+      '@sentry/node': 5.30.0
+      '@types/bn.js': 5.1.5
+      '@types/lru-cache': 5.1.1
+      adm-zip: 0.4.16
+      aggregate-error: 3.1.0
+      ansi-escapes: 4.3.2
+      boxen: 5.1.2
+      chalk: 2.4.2
+      chokidar: 3.6.0
+      ci-info: 2.0.0
+      debug: 4.3.4(supports-color@8.1.1)
+      enquirer: 2.4.1
+      env-paths: 2.2.1
+      ethereum-cryptography: 1.2.0
+      ethereumjs-abi: 0.6.8
+      find-up: 2.1.0
+      fp-ts: 1.19.3
+      fs-extra: 7.0.1
+      glob: 7.2.0
+      immutable: 4.3.5
+      io-ts: 1.10.4
+      keccak: 3.0.4
+      lodash: 4.17.21
+      mnemonist: 0.38.5
+      mocha: 10.3.0
+      p-map: 4.0.0
+      raw-body: 2.5.2
+      resolve: 1.17.0
+      semver: 6.3.1
+      solc: 0.8.26(debug@4.3.4)
       source-map-support: 0.5.21
       stacktrace-parser: 0.1.10
       tsort: 0.0.1
@@ -9251,6 +9386,18 @@ snapshots:
       js-sha3: 0.8.0
       memorystream: 0.3.1
       require-from-string: 2.0.2
+      semver: 5.7.2
+      tmp: 0.0.33
+    transitivePeerDependencies:
+      - debug
+
+  solc@0.8.26(debug@4.3.4):
+    dependencies:
+      command-exists: 1.2.9
+      commander: 8.3.0
+      follow-redirects: 1.15.6(debug@4.3.4)
+      js-sha3: 0.8.0
+      memorystream: 0.3.1
       semver: 5.7.2
       tmp: 0.0.33
     transitivePeerDependencies:

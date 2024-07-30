@@ -2,7 +2,7 @@ import { Maker, OrderValidatorCode, QuoteType, StrategyType } from "../types";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { Database as HypercertsDatabase } from "./hypercerts-database-types";
 import { CONSTANTS, parseClaimOrFractionId } from "@hypercerts-org/sdk";
-import { getFractionsById } from "./graphl";
+import { getFractionsById, getOrders } from "./graphl";
 import { cacheExchange, Client, fetchExchange } from "@urql/core";
 
 const SUPABASE_HYPERCERTS_DATA_STAGING_URL = "https://zgvoyckkistexkfdmjqc.supabase.co";
@@ -14,7 +14,7 @@ const SUPABASE_HYPERCERTS_DATA_PRODUCTION_ANON_KEY =
 
 export class ApiClient {
   private _baseUrl: string;
-  private _urqlClient: Client;
+  private readonly _urqlClient: Client;
   private _supabaseHypercerts: SupabaseClient<HypercertsDatabase>;
 
   constructor(indexerEnvironment: "test" | "production", private readonly baseUrl?: string) {
@@ -123,7 +123,7 @@ export class ApiClient {
       baseQuery.eq("strategyId", strategy);
     }
 
-    return baseQuery.throwOnError();
+    return await getOrders({ signer, chainId: chainId ? BigInt(chainId) : undefined }, this._urqlClient);
   };
 
   /**
