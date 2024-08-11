@@ -864,4 +864,20 @@ export class HypercertExchangeClient {
       chainId,
     });
   }
+
+  /**
+   * Delete the order
+   * @param orderId Order ID
+   */
+  public async deleteOrder(orderId: string) {
+    const signer = this.getSigner();
+
+    if (!signer) {
+      throw new Error(`No signer address could be determined when deleting order ${orderId}`);
+    }
+
+    const signedMessage = await signer.signMessage(`Delete order ${orderId}`);
+
+    return this.api.deleteOrder(orderId, signedMessage);
+  }
 }

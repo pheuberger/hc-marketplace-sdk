@@ -166,6 +166,21 @@ export class ApiClient {
       )
       .then((res) => res.data);
   };
+
+  deleteOrder = async (orderId: string, signature: string) => {
+    return fetch(`${this._baseUrl}/marketplace/orders`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        orderId,
+        signature,
+      }),
+    })
+      .then((res) => this.handleResponse<{ success: boolean }>(res))
+      .then((res) => res.success);
+  };
 }
 
 interface FetchOrderArgs {
