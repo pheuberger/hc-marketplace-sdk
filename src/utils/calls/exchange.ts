@@ -15,7 +15,7 @@ export const executeTakerBid = (
 ): ContractMethods => {
   const overridesWithValue: PayableOverrides = {
     ...overrides,
-    ...(maker.currency === ZeroAddress && { value: maker.price }),
+    ...(maker.currency === ZeroAddress && { value: overrides?.value || maker.price }),
   };
   const contract = new Contract(address, HypercertExchangeAbi).connect(signer) as HypercertExchange;
   return {

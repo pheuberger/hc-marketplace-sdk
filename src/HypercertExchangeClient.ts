@@ -642,7 +642,10 @@ export class HypercertExchangeClient {
       id: string;
       valid: boolean;
       validatorCodes: OrderValidatorCode[];
-      order: Database["public"]["Tables"]["marketplace_orders"]["Row"];
+      order: Omit<
+        Database["public"]["Tables"]["marketplace_orders"]["Row"],
+        "id" | "createdAt" | "invalidated" | "validator_codes"
+      >;
     }[]
   > {
     // Prepare matching orders for validation
@@ -873,10 +876,10 @@ export class HypercertExchangeClient {
     const signer = this.getSigner();
 
     if (!signer) {
-      throw new Error(`No signer address could be determined when deleting order ${orderId}`);
+      throw new Error(`No signer address could be determined when deleting listing ${orderId}`);
     }
 
-    const signedMessage = await signer.signMessage(`Delete order ${orderId}`);
+    const signedMessage = await signer.signMessage(`Delete listing ${orderId}`);
 
     return this.api.deleteOrder(orderId, signedMessage);
   }
