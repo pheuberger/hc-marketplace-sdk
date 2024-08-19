@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@hypercerts-org/sdk':
-        specifier: 2.0.0-alpha.35
-        version: 2.0.0-alpha.35(@nomicfoundation/hardhat-ethers@3.0.5(ethers@6.11.0)(hardhat@2.20.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)))(@types/node@18.19.15)(ethers@6.11.0)(graphql@16.8.1)(rollup@4.10.0)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
+        specifier: 2.0.0-alpha.36
+        version: 2.0.0-alpha.36(@nomicfoundation/hardhat-ethers@3.0.5(ethers@6.11.0)(hardhat@2.20.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)))(@types/node@18.19.15)(ethers@6.11.0)(graphql@16.8.1)(rollup@4.10.0)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
       '@supabase/supabase-js':
         specifier: ^2.39.2
         version: 2.39.6
@@ -37,8 +37,8 @@ importers:
         specifier: ^17.0.2
         version: 17.8.1
       '@hypercerts-org/contracts':
-        specifier: 2.0.0-alpha.3
-        version: 2.0.0-alpha.3(@nomicfoundation/hardhat-ethers@3.0.5(ethers@6.11.0)(hardhat@2.20.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)))(@swc/core@1.6.5)(@types/node@18.19.15)(ethers@6.11.0)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
+        specifier: 2.0.0-alpha.4
+        version: 2.0.0-alpha.4(@nomicfoundation/hardhat-ethers@3.0.5(ethers@6.11.0)(hardhat@2.20.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)))(@swc/core@1.6.5)(@types/node@18.19.15)(ethers@6.11.0)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
       '@istanbuljs/nyc-config-typescript':
         specifier: ^1.0.2
         version: 1.0.2(nyc@15.1.0)
@@ -544,11 +544,11 @@ packages:
   '@humanwhocodes/object-schema@2.0.2':
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
 
-  '@hypercerts-org/contracts@2.0.0-alpha.3':
-    resolution: {integrity: sha512-R8HJnr6bHGPZ238+05UAbhtUoJXJNlMQAMxBFKrWhrLvDdfV/i0C6/kDrB5HMTH433mpR37QKkLxcgQKWdkteA==}
+  '@hypercerts-org/contracts@2.0.0-alpha.4':
+    resolution: {integrity: sha512-8iOWb2PPxP1ID5DDyP5apNTbC4KVjt+Ygl9BXAYR2ftyJYu+M6QVpEnvs21BeApnL9689d5aqKeudI751YEgTw==}
 
-  '@hypercerts-org/sdk@2.0.0-alpha.35':
-    resolution: {integrity: sha512-rdc1F+MpuoYr9yW4XtawhzVWrTuQ8BUjHYf9YCrq2qxVWMcgu4nrg6lAZCoAyK7hNnlGQW1juhN7q+w0shWGKw==}
+  '@hypercerts-org/sdk@2.0.0-alpha.36':
+    resolution: {integrity: sha512-H0qj6vKz7SABUpRU7ANj35RxmXr1Iy+xgw7Owr5vNUV02OcHi8mLlDXWCO40nUMCMYLf4Ep3R42J8XeQwawHOA==}
 
   '@iarna/toml@2.2.5':
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
@@ -5350,7 +5350,7 @@ snapshots:
   '@commitlint/config-validator@17.8.1':
     dependencies:
       '@commitlint/types': 17.8.1
-      ajv: 8.12.0
+      ajv: 8.16.0
 
   '@commitlint/ensure@17.8.1':
     dependencies:
@@ -5811,7 +5811,7 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.2': {}
 
-  '@hypercerts-org/contracts@2.0.0-alpha.3(@nomicfoundation/hardhat-ethers@3.0.5(ethers@6.11.0)(hardhat@2.20.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)))(@swc/core@1.6.5)(@types/node@18.19.15)(ethers@6.11.0)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)':
+  '@hypercerts-org/contracts@2.0.0-alpha.4(@nomicfoundation/hardhat-ethers@3.0.5(ethers@6.11.0)(hardhat@2.20.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)))(@swc/core@1.6.5)(@types/node@18.19.15)(ethers@6.11.0)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)':
     dependencies:
       '@tenderly/hardhat-tenderly': 2.3.0(@nomicfoundation/hardhat-ethers@3.0.5(ethers@6.11.0)(hardhat@2.20.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)))(@swc/core@1.6.5)(@types/node@18.19.15)(ethers@6.11.0)(hardhat@2.22.8(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3))
       hardhat: 2.22.8(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
@@ -5830,10 +5830,10 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@hypercerts-org/sdk@2.0.0-alpha.35(@nomicfoundation/hardhat-ethers@3.0.5(ethers@6.11.0)(hardhat@2.20.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)))(@types/node@18.19.15)(ethers@6.11.0)(graphql@16.8.1)(rollup@4.10.0)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)':
+  '@hypercerts-org/sdk@2.0.0-alpha.36(@nomicfoundation/hardhat-ethers@3.0.5(ethers@6.11.0)(hardhat@2.20.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)))(@types/node@18.19.15)(ethers@6.11.0)(graphql@16.8.1)(rollup@4.10.0)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)':
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.8.1)
-      '@hypercerts-org/contracts': 2.0.0-alpha.3(@nomicfoundation/hardhat-ethers@3.0.5(ethers@6.11.0)(hardhat@2.20.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)))(@swc/core@1.6.5)(@types/node@18.19.15)(ethers@6.11.0)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
+      '@hypercerts-org/contracts': 2.0.0-alpha.4(@nomicfoundation/hardhat-ethers@3.0.5(ethers@6.11.0)(hardhat@2.20.0(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)))(@swc/core@1.6.5)(@types/node@18.19.15)(ethers@6.11.0)(ts-node@10.9.2(@swc/core@1.6.5)(@types/node@18.19.15)(typescript@5.3.3))(typescript@5.3.3)
       '@openzeppelin/merkle-tree': 1.0.7
       '@swc/core': 1.6.5
       ajv: 8.16.0
@@ -7948,7 +7948,7 @@ snapshots:
 
   es-shim-unscopables@1.0.2:
     dependencies:
-      hasown: 2.0.1
+      hasown: 2.0.2
 
   es-to-primitive@1.2.1:
     dependencies:
