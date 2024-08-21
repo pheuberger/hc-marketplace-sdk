@@ -23,8 +23,8 @@ const currencyAddressesPerChain: Record<ChainId, CurrenciesForChain> = {
   },
   [ChainId.BASE_SEPOLIA]: {
     ETH: ZeroAddress as `0x${string}`,
-    WETH: "0x1BDD24840e119DC2602dCC587Dd182812427A5Cc",
-    DAI: "0xbEC8ab89b34835F6b99fFc29c088426E8e708ceA",
+    WETH: "0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9",
+    DAI: "0xE4aB69C077896252FAFBD49EFD26B5D171A32410",
     USDC: "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
   },
   [ChainId.OPTIMISM]: {
