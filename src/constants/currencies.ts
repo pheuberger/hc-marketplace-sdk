@@ -51,6 +51,12 @@ const currencyAddressesPerChain: Record<ChainId, CurrenciesForChain> = {
     DAI: "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
     USDC: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
   },
+  [ChainId.ARBITRUM]: {
+    ETH: ZeroAddress as `0x${string}`,
+    WETH: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+    DAI: "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+    USDC: "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+  },
 };
 
 const getCurrencies = (chainId: ChainId): Currencies => {
@@ -88,4 +94,5 @@ export const currenciesByNetwork: Record<ChainId, Currencies> = {
   [ChainId.CELO]: getCurrencies(ChainId.CELO),
   [ChainId.BASE]: getCurrencies(ChainId.BASE),
   [ChainId.ARBITRUM_SEPOLIA]: getCurrencies(ChainId.ARBITRUM_SEPOLIA),
+  [ChainId.ARBITRUM]: getCurrencies(ChainId.ARBITRUM),
 };
