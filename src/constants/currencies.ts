@@ -1,12 +1,21 @@
 import { ChainId, Currencies } from "../types";
 import { ZeroAddress } from "ethers";
 
-type CurrenciesForChain = {
+type DefaultCurrencies = {
   ETH: `0x${string}`;
   WETH: `0x${string}`;
   DAI: `0x${string}`;
   USDC: `0x${string}`;
 };
+
+type CeloCurrencies = {
+  CELO: `0x${string}`;
+  cUSD: `0x${string}`;
+  USDC: `0x${string}`;
+  USDT: `0x${string}`;
+};
+
+type CurrenciesForChain = DefaultCurrencies | CeloCurrencies;
 
 const currencyAddressesPerChain: Record<ChainId, CurrenciesForChain> = {
   [ChainId.SEPOLIA]: {
@@ -40,16 +49,10 @@ const currencyAddressesPerChain: Record<ChainId, CurrenciesForChain> = {
     USDC: "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
   },
   [ChainId.CELO]: {
-    ETH: ZeroAddress as `0x${string}`,
-    WETH: "0x66803fb87abd4aac3cbb3fad7c3aa01f6f3fb207",
-    DAI: "0xE4fE50cdD716522A56204352f00AA110F731932d",
-    USDC: "0xef4229c8c3250C675F21BCefa42f58EfbfF6002a",
-  },
-  [ChainId.BASE]: {
-    ETH: ZeroAddress as `0x${string}`,
-    WETH: "0x4200000000000000000000000000000000000006",
-    DAI: "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
-    USDC: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    CELO: "0x471EcE3750Da237f93B8E339c536989b8978a438",
+    cUSD: "0x765DE816845861e75A25fCA122bb6898B8B1282a",
+    USDC: "0xcebA9300f2b948710d2653dD7B07f33A8B32118C",
+    USDT: "0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e",
   },
   [ChainId.ARBITRUM]: {
     ETH: ZeroAddress as `0x${string}`,
@@ -62,25 +65,50 @@ const currencyAddressesPerChain: Record<ChainId, CurrenciesForChain> = {
 const getCurrencies = (chainId: ChainId): Currencies => {
   const currenciesForChain = currencyAddressesPerChain[chainId];
 
+  if ("ETH" in currenciesForChain) {
+    return {
+      ETH: {
+        symbol: "ETH",
+        address: currenciesForChain.ETH,
+        decimals: 18,
+      },
+      WETH: {
+        symbol: "WETH",
+        address: currenciesForChain.WETH,
+        decimals: 18,
+      },
+      DAI: {
+        symbol: "DAI",
+        address: currenciesForChain.DAI,
+        decimals: 18,
+      },
+      USDC: {
+        symbol: "USDC",
+        address: currenciesForChain.USDC,
+        decimals: 6,
+      },
+    };
+  }
+
   return {
-    ETH: {
-      symbol: "ETH",
-      address: currenciesForChain.ETH,
+    CELO: {
+      symbol: "CELO",
+      address: currenciesForChain.CELO,
       decimals: 18,
     },
-    WETH: {
-      symbol: "WETH",
-      address: currenciesForChain.WETH,
-      decimals: 18,
-    },
-    DAI: {
-      symbol: "DAI",
-      address: currenciesForChain.DAI,
+    cUSD: {
+      symbol: "cUSD",
+      address: currenciesForChain.cUSD,
       decimals: 18,
     },
     USDC: {
       symbol: "USDC",
       address: currenciesForChain.USDC,
+      decimals: 6,
+    },
+    USDT: {
+      symbol: "USDT",
+      address: currenciesForChain.USDT,
       decimals: 6,
     },
   };
@@ -92,7 +120,6 @@ export const currenciesByNetwork: Record<ChainId, Currencies> = {
   [ChainId.BASE_SEPOLIA]: getCurrencies(ChainId.BASE_SEPOLIA),
   [ChainId.OPTIMISM]: getCurrencies(ChainId.OPTIMISM),
   [ChainId.CELO]: getCurrencies(ChainId.CELO),
-  [ChainId.BASE]: getCurrencies(ChainId.BASE),
   [ChainId.ARBITRUM_SEPOLIA]: getCurrencies(ChainId.ARBITRUM_SEPOLIA),
   [ChainId.ARBITRUM]: getCurrencies(ChainId.ARBITRUM),
 };

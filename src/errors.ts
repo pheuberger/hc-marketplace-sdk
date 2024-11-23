@@ -47,3 +47,11 @@ export class ErrorItemId extends Error {
     super("Item id is not in the list");
   }
 }
+
+/** Currency is not supported */
+export class ErrorCurrency extends Error {
+  public readonly name = "ErrorCurrency";
+  constructor() {
+    super("Currency is not defined or supported");
+  }
+}

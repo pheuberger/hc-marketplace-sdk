@@ -25,6 +25,14 @@ export const chainInfo: { [chainId in ChainId]: ChainInfo } = {
     baseApiUrl: "https://staging-api.hypercerts.org",
     osApiUrl: "https://testnets-api.opensea.io"
   },
+  [ChainId.ARBITRUM]: {
+    label: "Arbitrum",
+    appUrl: "https://app.hypercerts.org",
+    explorer: "https://arbitrum.io",
+    rpcUrl: "https://arbitrum.io",
+    baseApiUrl: "https://api.hypercerts.org",
+    osApiUrl: "https://testnets-api.opensea.io"
+  },
   [ChainId.ARBITRUM_SEPOLIA]: {
     label: "Arbitrum Sepolia",
     appUrl: "https://testnet.hypercerts.org",
@@ -49,12 +57,4 @@ export const chainInfo: { [chainId in ChainId]: ChainInfo } = {
     baseApiUrl: "https://api.hypercerts.org",
     osApiUrl: "https://testnets-api.opensea.io"
   },
-  [ChainId.BASE]: {
-    label: "Base",
-    appUrl: "https://app.hypercerts.org",
-    explorer: "https://basescan.io",
-    rpcUrl: "https://mainnet.base.org",
-    baseApiUrl: "https://api.hypercerts.org",
-    osApiUrl: "https://testnets-api.opensea.io"
-  }
 };

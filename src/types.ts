@@ -9,20 +9,21 @@ export interface Addresses {
   MINTER: `0x${string}`;
 }
 
-/** List of supported currencies */
-export interface Currencies {
-  ETH: Currency;
-  WETH: Currency;
-  USDC: Currency;
-  DAI: Currency;
-}
-
 /** Available information about a currency */
 export interface Currency {
   symbol: string;
   address: `0x${string}`;
   decimals: number;
 }
+
+/** All possible supported currencies */
+export const SUPPORTED_CURRENCIES = ["ETH", "WETH", "DAI", "CELO", "cUSD", "USDT", "USDC"] as const;
+
+export type SupportedCurrencySymbol = (typeof SUPPORTED_CURRENCIES)[number];
+
+/** Type for currency configuration */
+export type Currencies = Partial<Record<SupportedCurrencySymbol, Currency>>;
+
 
 /** List of supported chains */
 export enum ChainId {
@@ -31,7 +32,6 @@ export enum ChainId {
   HARDHAT = 31337,
   OPTIMISM = 10,
   CELO = 42220,
-  BASE = 8453,
   ARBITRUM_SEPOLIA = 421614,
   ARBITRUM = 42161,
 }
