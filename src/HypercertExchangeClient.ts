@@ -32,6 +32,7 @@ import { encodeParams, getMakerParamsTypes, getTakerParamsTypes } from "./utils/
 import { allowance, approve, balanceOf, isApprovedForAll, setApprovalForAll } from "./utils/calls/tokens";
 import { strategyInfo } from "./utils/calls/strategies";
 import {
+  ErrorCurrency,
   ErrorItemId,
   ErrorMerkleTreeDepth,
   ErrorQuoteType,
@@ -234,7 +235,7 @@ export class HypercertExchangeClient {
     price,
     itemIds,
     amounts = [1],
-    currency = this.currencies.WETH.address,
+    currency,
     startTime = Math.floor(Date.now() / 1000),
     additionalParameters = [],
   }: CreateMakerInput): Promise<CreateMakerBidOutput> {
@@ -242,6 +243,10 @@ export class HypercertExchangeClient {
 
     if (!this.isTimestampValid(startTime) || !this.isTimestampValid(endTime)) {
       throw new ErrorTimestamp();
+    }
+
+    if (!currency) {
+      throw new ErrorCurrency();
     }
 
     const signerAddress = await signer.getAddress();
@@ -709,7 +714,7 @@ export class HypercertExchangeClient {
     price,
     startTime,
     endTime,
-    currency = this.currencies.WETH.address,
+    currency,
     additionalParameters = [],
   }: Omit<
     CreateMakerInput,
@@ -719,6 +724,10 @@ export class HypercertExchangeClient {
 
     if (!address) {
       throw new Error("No signer address could be determined");
+    }
+
+    if (!currency) {
+      throw new ErrorCurrency();
     }
 
     const chainId = this.chainId;
@@ -766,7 +775,7 @@ export class HypercertExchangeClient {
     price,
     startTime,
     endTime,
-    currency = this.currencies.WETH.address,
+    currency,
     maxUnitAmount,
     minUnitAmount,
     minUnitsToKeep,
@@ -786,6 +795,10 @@ export class HypercertExchangeClient {
 
     if (!address) {
       throw new Error("No signer address could be determined");
+    }
+
+    if (!currency) {
+      throw new ErrorCurrency();
     }
 
     const chainId = this.chainId;

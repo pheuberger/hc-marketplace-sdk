@@ -1,52 +1,55 @@
+import { getAddress } from "ethers";
 import { Addresses, ChainId } from "../types";
 import { deployments } from "@hypercerts-org/contracts";
 
-const sepoliaAddresses: Addresses = {
-  EXCHANGE_V2: deployments[11155111].HypercertExchange!,
-  TRANSFER_MANAGER_V2: deployments[11155111].TransferManager!,
-  ORDER_VALIDATOR_V2: deployments[11155111].OrderValidatorV2A!,
-  MINTER: deployments[11155111].HypercertMinterUUPS!,
-};
+// Type for valid contract names
+type ContractName = keyof (typeof deployments)[keyof typeof deployments];
 
-const baseSepoliaAddresses: Addresses = {
-  EXCHANGE_V2: deployments[84532].HypercertExchange!,
-  TRANSFER_MANAGER_V2: deployments[84532].TransferManager!,
-  ORDER_VALIDATOR_V2: deployments[84532].OrderValidatorV2A!,
-  MINTER: deployments[84532].HypercertMinterUUPS!,
-};
+function getRequiredAddress(chainId: number, contractName: ContractName): `0x${string}` {
+  const chainIdStr = chainId.toString() as keyof typeof deployments;
+  const deployment = deployments[chainIdStr];
 
-const optimismAddresses: Addresses = {
-  EXCHANGE_V2: deployments[10].HypercertExchange!,
-  TRANSFER_MANAGER_V2: deployments[10].TransferManager!,
-  ORDER_VALIDATOR_V2: deployments[10].OrderValidatorV2A!,
-  MINTER: deployments[10].HypercertMinterUUPS!,
-};
+  if (!deployment) {
+    throw new Error(`Missing deployment for chain ${chainId}`);
+  }
 
-const celoAddresses: Addresses = {
-  EXCHANGE_V2: deployments[42220].HypercertExchange!,
-  TRANSFER_MANAGER_V2: deployments[42220].TransferManager!,
-  ORDER_VALIDATOR_V2: deployments[42220].OrderValidatorV2A!,
-  MINTER: deployments[42220].HypercertMinterUUPS!,
-};
+  const address = deployment[contractName];
+  if (!address) {
+    throw new Error(`Missing required address for ${contractName} on chain ${chainId}`);
+  }
 
-const baseAddresses: Addresses = {
-  EXCHANGE_V2: deployments[8453].HypercertExchange!,
-  TRANSFER_MANAGER_V2: deployments[8453].TransferManager!,
-  ORDER_VALIDATOR_V2: deployments[8453].OrderValidatorV2A!,
-  MINTER: deployments[8453].HypercertMinterUUPS!,
-};
+  return getAddress(address) as `0x${string}`;
+}
 
-/**
- * List of useful contract addresses
- */
+// Helper function to create addresses for a network
+const createNetworkAddresses = (chainId: number): Addresses => ({
+  EXCHANGE_V2: getRequiredAddress(chainId, "HypercertExchange"),
+  TRANSFER_MANAGER_V2: getRequiredAddress(chainId, "TransferManager"),
+  ORDER_VALIDATOR_V2: getRequiredAddress(chainId, "OrderValidatorV2A"),
+  MINTER: getRequiredAddress(chainId, "HypercertMinterUUPS"),
+});
+
+// Network chain IDs
+const CHAIN_IDS = {
+  // Testnets
+  SEPOLIA: 11155111,
+  BASE_SEPOLIA: 84532,
+  ARBITRUM_SEPOLIA: 421614,
+  // Mainnets
+  OPTIMISM: 10,
+  CELO: 42220,
+  ARBITRUM: 42161,
+} as const;
+
 export const addressesByNetwork: { [chainId in ChainId]: Addresses } = {
   // Testnets
-  [ChainId.SEPOLIA]: sepoliaAddresses,
-  [ChainId.HARDHAT]: sepoliaAddresses,
-  [ChainId.BASE_SEPOLIA]: baseSepoliaAddresses,
+  [ChainId.SEPOLIA]: createNetworkAddresses(CHAIN_IDS.SEPOLIA),
+  [ChainId.HARDHAT]: createNetworkAddresses(CHAIN_IDS.SEPOLIA), // Using Sepolia for Hardhat
+  [ChainId.BASE_SEPOLIA]: createNetworkAddresses(CHAIN_IDS.BASE_SEPOLIA),
+  [ChainId.ARBITRUM_SEPOLIA]: createNetworkAddresses(CHAIN_IDS.ARBITRUM_SEPOLIA),
 
   // Production nets
-  [ChainId.OPTIMISM]: optimismAddresses,
-  [ChainId.CELO]: celoAddresses,
-  [ChainId.BASE]: baseAddresses,
+  [ChainId.OPTIMISM]: createNetworkAddresses(CHAIN_IDS.OPTIMISM),
+  [ChainId.CELO]: createNetworkAddresses(CHAIN_IDS.CELO),
+  [ChainId.ARBITRUM]: createNetworkAddresses(CHAIN_IDS.ARBITRUM),
 };
