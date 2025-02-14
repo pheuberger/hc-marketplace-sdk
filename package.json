@@ -41,7 +41,9 @@
     "*.{js,jsx,ts,tsx,json,yaml,yml}": "pnpm run format:write"
   },
   "peerDependencies": {
-    "ethers": "^6.6.2"
+    "ethers": "^6.6.2",
+    "@safe-global/api-kit": "^2.5.7",
+    "@safe-global/protocol-kit": "^5.2.0"
   },
   "devDependencies": {
     "@0no-co/graphqlsp": "^1.12.8",

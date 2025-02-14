@@ -57,6 +57,7 @@ import {
 import { ApiClient } from "./utils/api";
 import { CONSTANTS } from "@hypercerts-org/sdk";
 import { asDeployedChain } from "@hypercerts-org/contracts";
+import { SafeTransactionBuilder } from "./safe/SafeTransactionBuilder";
 
 const ACCEPTED_ERROR_CODES = [
   OrderValidatorCode.ORDER_EXPECTED_TO_BE_VALID,
@@ -733,5 +734,20 @@ export class HypercertExchangeClient {
     const signedMessage = await signer.signMessage(`Delete listing ${orderId}`);
 
     return this.api.deleteOrder(orderId, signedMessage);
+  }
+
+  /**
+   * Bundle approval operations into a single Safe transaction
+   * @param safeAddress The address of the Safe contract
+   * @param collectionAddress Address of the collection to approve
+   * @returns Transaction hash
+   */
+  public async bundleApprovalsForSafe(
+    safeAddress: string,
+    collectionAddress: string,
+  ): Promise<string> {
+    const signer = this.getSigner();
+    const safeBuilder = new SafeTransactionBuilder(this.provider, signer, this.chainId,this.addresses);
+    return safeBuilder.bundleApprovals(safeAddress, collectionAddress);
   }
 }
