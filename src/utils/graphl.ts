@@ -88,7 +88,10 @@ const ordersQuery = graphql(`
   }
 `);
 
-export const getOrders = async (filter: { chainId?: BigInt; signer?: `0x${string}`; hypercertId?: string }, client: Client) => {
+export const getOrders = async (
+  filter: { chainId?: bigint; signer?: `0x${string}`; hypercertId?: string },
+  client: Client
+) => {
   const where: Record<string, any> = {};
 
   if (filter?.chainId) {
@@ -111,5 +114,5 @@ export const getOrders = async (filter: { chainId?: BigInt; signer?: `0x${string
     throw new Error(error.message);
   }
 
-  return data?.orders.data;
+  return data?.orders;
 };

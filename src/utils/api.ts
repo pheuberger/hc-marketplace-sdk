@@ -1,8 +1,7 @@
 import { Maker, OrderValidatorCode, QuoteType, StrategyType } from "../types";
-import { CONSTANTS, parseClaimOrFractionId } from "@hypercerts-org/sdk";
-import { getFractionsById, getOrders } from "./graphl";
+import { CONSTANTS } from "@hypercerts-org/sdk";
+import { getOrders } from "./graphl";
 import { cacheExchange, Client, fetchExchange } from "@urql/core";
-
 
 export class ApiClient {
   private _baseUrl: string;
@@ -91,7 +90,7 @@ export class ApiClient {
    */
   fetchOrders = async ({ signer, chainId }: Partial<FetchOrderArgs>) => {
     return await getOrders({ signer, chainId: chainId ? BigInt(chainId) : undefined }, this._urqlClient);
-  }
+  };
 
   /**
    * @deprecated use the GraphQL API instead
