@@ -24,7 +24,6 @@ export type SupportedCurrencySymbol = (typeof SUPPORTED_CURRENCIES)[number];
 /** Type for currency configuration */
 export type Currencies = Partial<Record<SupportedCurrencySymbol, Currency>>;
 
-
 /** List of supported chains */
 export enum ChainId {
   SEPOLIA = 11155111,
@@ -157,7 +156,14 @@ export type CreateDirectFractionsSaleMakerAskInput = Omit<
 
 export type CreateFractionalSaleMakerAskInput = Omit<
   CreateMakerInput,
-  "strategyId" | "collectionType" | "collection" | "subsetNonce" | "orderNonce" | "amounts" | "additionalParameters" | "price"
+  | "strategyId"
+  | "collectionType"
+  | "collection"
+  | "subsetNonce"
+  | "orderNonce"
+  | "amounts"
+  | "additionalParameters"
+  | "price"
 > & {
   /**
    * Price of one unit in wei
@@ -183,7 +189,7 @@ export type CreateFractionalSaleMakerAskInput = Omit<
    * Root of the allowlist tree for users that are allowed to buy parts of the fraction.
    */
   root?: string;
-}
+};
 
 export type CreateMakerCollectionOfferInput = Omit<CreateMakerInput, "strategyId" | "itemIds">;
 
@@ -313,6 +319,9 @@ export enum OrderValidatorCode {
   ERC1155_BALANCE_OF_ITEM_ID_INFERIOR_TO_AMOUNT = 632,
   ERC1155_IS_APPROVED_FOR_ALL_DOES_NOT_EXIST = 633,
   ERC1155_NO_APPROVAL_FOR_ALL = 634,
+  // Hypercert specific errors
+  HYPERCERT_OWNER_OF_DOES_NOT_EXIST = 641,
+  HYPERCERT_FRACTION_NOT_HELD_BY_USER = 642,
 
   // 7. Asset-type errors
   POTENTIAL_INVALID_COLLECTION_TYPE_SHOULD_BE_ERC721 = 701,
@@ -328,25 +337,25 @@ export enum OrderValidatorCode {
 }
 
 export interface Order {
-  additionalParameters: string
-  amounts: number[]
-  chainId: number
-  collection: string
-  collectionType: number
-  createdAt: string
-  currency: string
-  endTime: number
-  globalNonce: string
-  id: string
-  invalidated: boolean
-  itemIds: string[]
-  orderNonce: string
-  price: string
-  quoteType: number
-  signature: string
-  signer: string
-  startTime: number
-  strategyId: number
-  subsetNonce: number
-  validator_codes: number[] | null
+  additionalParameters: string;
+  amounts: number[];
+  chainId: number;
+  collection: string;
+  collectionType: number;
+  createdAt: string;
+  currency: string;
+  endTime: number;
+  globalNonce: string;
+  id: string;
+  invalidated: boolean;
+  itemIds: string[];
+  orderNonce: string;
+  price: string;
+  quoteType: number;
+  signature: string;
+  signer: string;
+  startTime: number;
+  strategyId: number;
+  subsetNonce: number;
+  validator_codes: number[] | null;
 }
